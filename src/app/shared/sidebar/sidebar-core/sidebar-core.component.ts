@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-core',
   imports: [],
   templateUrl: './sidebar-core.component.html',
 })
-export class SidebarCoreComponent {}
+export class SidebarCoreComponent {
+  isSidebarOpen = signal(true);
+  toggleSidebar() {
+    this.isSidebarOpen.update((open) => !open);
+  }
+}
