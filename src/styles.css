@@ -15,6 +15,16 @@
       transform: scale(1);
     }
   }
+  --animate-fade-in-scale-mobile: fade-in-scale 10s ease-in-out infinite
+    alternate;
+  @keyframes fade-in-scale {
+    0% {
+      transform: scale(1.4);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 }
 
 /* Glassmorphism effect */
