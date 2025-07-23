@@ -1,4 +1,4 @@
-<section
+<!-- <section
   id="contacto"
   class="flex flex-col relative items-center min-h-screen bg-background md:p-24 p-12 text-white"
 >
@@ -20,6 +20,142 @@
     >
       <h3 class="font-semibold text-sm md:text-xl">Enviar Mensaje</h3>
       <p class="text-white/50">Completa el formulario y te responderé pronto</p>
+    </div>
+  </div>
+</section> -->
+<section
+  id="contacto"
+  class="flex flex-col relative items-center min-h-screen bg-background md:p-24 p-12 text-white"
+>
+  <h2 class="font-sen font-bold text-3xl mb-8">Contacto</h2>
+
+  <div
+    class="md:flex md:flex-row flex flex-col items-center justify-center gap-4 max-w-180"
+  >
+    <div
+      class="border border-gray-500/40 max-w-[400px] bg-background2 rounded-lg p-4"
+    >
+      <h3 class="font-semibold text-sm md:text-xl">Información de Contacto</h3>
+      <p class="text-white/60 text-sm font-extralight">
+        No dudes en contactarme para oportunidades de colaboración
+      </p>
+    </div>
+    <div
+      class="border border-gray-500/40 max-w-[400px] bg-background2 rounded-lg p-4"
+    >
+      <h3 class="font-semibold text-sm md:text-xl">Enviar Mensaje</h3>
+      <p class="text-white/60 text-sm font-extralight">
+        Completa el formulario y te responderé pronto
+      </p>
+      <form #contactForm (ngSubmit)="sendEmail()" [formGroup]="form" novalidate>
+        <div>
+          <!-- <label for="user_name" class="block text-sm font-medium text-gray-700"
+            >Nombre</label
+          > -->
+          <input
+            id="user_name"
+            formControlName="user_name"
+            name="user_name"
+            type="text"
+            class="w-full border border-gray-500/40 rounded px-3 py-2 mt-5 focus:outline-none focus:ring-1 focus:ring-white bg-background3 text-sm text-gray-500"
+            placeholder="Tu nombre"
+          />
+          <p
+            *ngIf="
+              form.get('user_name')?.invalid && form.get('user_name')?.touched
+            "
+            class="text-red-500 text-xs absolute"
+          >
+            Nombre requerido (mínimo 2 caracteres)
+          </p>
+        </div>
+
+        <div>
+          <!-- <label
+            for="user_email"
+            class="block text-sm font-medium text-gray-700"
+            >Correo electrónico</label
+          > -->
+          <input
+            id="user_email"
+            formControlName="user_email"
+            name="user_email"
+            type="email"
+            class="w-full border rounded border-gray-500/40 px-3 py-2 mt-5 focus:outline-none focus:ring-1 focus:ring-white bg-background3 text-sm text-gray-500"
+            placeholder="Tu email"
+          />
+          <p
+            *ngIf="
+              form.get('user_email')?.invalid && form.get('user_email')?.touched
+            "
+            class="text-red-500 text-xs absolute"
+          >
+            Ingresa un correo válido
+          </p>
+        </div>
+
+        <div>
+          <!-- <label for="message" class="block text-sm font-medium text-gray-700"
+            >Mensaje</label
+          > -->
+          <textarea
+            id="message"
+            formControlName="message"
+            name="message"
+            rows="4"
+            class="w-full border rounded border-gray-500/40 px-3 py-2 mt-5 focus:outline-none focus:ring-1 focus:ring-white bg-background3 text-sm text-gray-500"
+            placeholder="Tu mensaje"
+          ></textarea>
+          <p
+            *ngIf="form.get('message')?.invalid && form.get('message')?.touched"
+            class="text-red-500 text-xs absolute"
+          >
+            El mensaje debe tener al menos 10 caracteres
+          </p>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="sending || form.invalid"
+          class="w-full bg-white hover:bg-background3 hover:border-gray-500/40 border border-transparent hover:text-white text-black font-semibold py-2 px-4 mt-5 rounded flex justify-center items-center"
+        >
+          <svg
+            *ngIf="sending"
+            class="animate-spin h-5 w-5 mr-2 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            ></path>
+          </svg>
+          <span>{{ sending ? "Enviando..." : "Enviar mensaje" }}</span>
+        </button>
+
+        <p
+          *ngIf="success === true"
+          class="text-green-600 mt-2 text-sm text-center"
+        >
+          ✅ Mensaje enviado con éxito
+        </p>
+        <p
+          *ngIf="success === false"
+          class="text-red-600 mt-2 text-sm text-center"
+        >
+          ❌ Ocurrió un error al enviar el mensaje. Intenta nuevamente.
+        </p>
+      </form>
     </div>
   </div>
 </section>

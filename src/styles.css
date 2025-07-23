@@ -4,6 +4,9 @@
 @import "tailwindcss";
 @theme {
   --color-background: #171717;
+  --color-background2: #1c1c1c;
+  --color-background3: #262626;
+
   --font-sen: "Sen", sans-serif;
 
   --animate-fade-in-scale: fade-in-scale 20s ease-in-out infinite alternate;
